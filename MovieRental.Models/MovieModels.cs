@@ -7,9 +7,11 @@ using System.ComponentModel;
 
 namespace MovieRental.Models
 {
+    [MetadataType(typeof(MovieMetadata))]
     public class Movie
     {
-        [Key][Required]
+        [Key]
+        [Required]
         public string MovieId { get; set; }
         [Required]
         public string Title { get; set; }
@@ -55,4 +57,45 @@ namespace MovieRental.Models
             }
         }
     }
+
+    public class MovieMetadata
+    {
+        [Required(ErrorMessage = "Movie ID is required")]
+        [DisplayName("ID")]
+        [RegularExpression(@"[a-z]{2}\d{7}$",
+            ErrorMessage = "The format should be 2 lowercase letter followed with 7 digits")]
+        public string MovieId { get; set; }
+        [Required(ErrorMessage = "Title is required")]
+        public string Title { get; set; }
+        [DisplayName("Year")]
+        [RegularExpression(@"\d{4}$",
+            ErrorMessage = "The format should be 4 digits")]
+        public string ReleaseYear { get; set; }
+        [DisplayName("Classification")]
+        public string FilmRating { get; set; }
+        public string Language { get; set; }
+        [DisplayName("Poster URL")]
+        [Required]
+        public string Poster { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Plot { get; set; }
+        private List<Genre> genres = new List<Genre>();
+        public virtual List<Genre> Genres
+        {
+            get
+            {
+                return genres;
+            }
+            set
+            {
+                genres = value;
+            }
+        }
+        [Required]
+        public int NoInStock { get; set; }
+        [Required]
+        public double RentalRate { get; set; }
+        public string ImdbRating { get; set; }
+    }
+
 }

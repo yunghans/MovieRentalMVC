@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MovieRental.Data;
+using System.Data.Entity;
 
 namespace MovieRental
 {
@@ -16,6 +18,8 @@ namespace MovieRental
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<MovieRentalContext>(new DropCreateDatabaseIfModelChanges<MovieRentalContext>());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
