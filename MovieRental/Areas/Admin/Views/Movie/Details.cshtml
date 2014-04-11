@@ -1,0 +1,78 @@
+﻿@model MovieRental.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReleaseYear)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReleaseYear)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmRating)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmRating)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Language)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Language)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Poster)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Poster)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Plot)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Plot)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NoInStock)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoInStock)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RentalRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RentalRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ImdbRating)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImdbRating)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
