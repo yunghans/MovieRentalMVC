@@ -1,0 +1,42 @@
+﻿@model MovieRental.Areas.Admin.Controllers.BulkLoadOutput
+@using MovieRental.Models
+
+@{
+    ViewBag.Title = "BulkOutput";
+}
+
+<h2>Information Retrieved From Open Movie Database</h2>
+@if (Model.UnresolvedTitles.Count > 0)
+{
+    <h3>Unable to find a match for the following:</h3>
+    foreach (string item in Model.UnresolvedTitles)
+    {
+        <li>@item</li>
+    }
+}
+<div>
+    <h3>Match found for the following movies</h3>
+    @foreach (var m in Model.ResolvedMovie)
+    {
+        @* After Step 9 
+        <p>@m.Title</p>
+        *@
+        
+        @* After Step 12 *@
+        <div style="width: 320px; height:520px; float:left">
+            @Html.DisplayFor(modelItem => m)
+        </div>
+    }
+</div>
+<div style="float:left">
+    <p>
+    Do you want to add all these movies?
+    </p>
+    <p>
+    @using (Html.BeginForm("Save", "BulkLoad"))
+    {
+        <input style="color:Green;font-weight:bold" type="submit" name="Save" value="Yes"/>
+        <input style="color:Red;font-weight:bold" type="submit" name="Save" value="No"/>
+    }
+    </p>
+</div>

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie Bulk Loader</h2>
+Enter list of movies (one line per movies) to load
+@using (Html.BeginForm()) {
+    @Html.TextArea("movieList")
+    <p>Default Rental Rate:<br />@Html.TextBox("defaultRentalRate")</p>
+    <p>Default Quantity: <br />@Html.TextBox("defaultQty")</p>
+            
+    <p>
+    <input type="submit" value="Submit" />
+    </p>
+}
