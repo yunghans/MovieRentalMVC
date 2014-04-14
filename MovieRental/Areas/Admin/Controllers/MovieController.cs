@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MovieRental.Models;
 using MovieRental.Data;
 using System.Data.Entity.Validation;
+using MovieRental.Externals;
 
 namespace MovieRental.Areas.Admin.Controllers
 {
@@ -145,5 +146,13 @@ namespace MovieRental.Areas.Admin.Controllers
                 return View(movie);
             }
         }
+
+        [HttpPost]
+        public ActionResult OMDBSearch(string title)
+        {
+            Movie m = OMDBService.GetMoviesByTitle(title);
+            return Json(m);
+        }
+
     }
 }
