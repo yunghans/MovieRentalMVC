@@ -1,0 +1,58 @@
+﻿.movie-class {text-align:left; float:left;font-style:italic;}
+.movie-rating {text-align:right; float:right}
+.movie-lang{float:left;width:100%;font-weight:bold}
+.movie-plot{float:left;width:100%;height:100%}
+.posterimg
+{
+    width:120px;
+    vertical-align:middle;
+    text-align:center;
+}
+       
+.movie-container
+{
+    float:left;
+    width:200px;
+    height: 250px;
+    padding:10px;
+    text-align:center;
+}
+       
+.movie-section
+{
+    float:left;
+    width:200px;
+    height: 200px;
+           
+	position: relative;
+	-webkit-transform:rotateY(0deg);
+	-webkit-transition:-webkit-transform .5s ease 0.25s;
+	-webkit-transform-style:preserve-3d;     
+	text-align: center;    
+ 
+}
+       
+.movie-section > .front
+{
+    width:200px;
+    height:200px;
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    line-height:200px; 
+    background: #fffeff;
+    #-webkit-transform:translateZ(40px);
+    -webkit-box-shadow: 1px 3px 3px rgba(0,0,0,0.4);
+}
+       
+.movie-section > .back
+{
+    width:200px;
+    height:200px;
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: #dfdedf;
+	-webkit-transform:rotateY(-180deg) translateZ(2px);
+    -webkit-box-shadow: 1px 3px 3px rgba(0,0,0,0.4);
+}
+       
+.movie-section:hover {
+	-webkit-transform: rotateY(180deg);
+}

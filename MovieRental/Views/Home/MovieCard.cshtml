@@ -1,0 +1,19 @@
+﻿@model MovieRental.Models.Movie
+
+@* Requires "~/Content/Movie.css"*@
+
+<div class="movie-container">
+    <div class="movie-section">
+        <div class="front">
+            <div class="movie-poster"><img class="posterimg" src ="@Model.Poster" alt=""/></div>
+        </div>
+        <div class="back">
+            <div class="movie-class">@Model.FilmRating</div>
+            <div class="movie-rating">Rating: @Model.ImdbRating</div>
+            <div class="movie-lang">@Model.Language</div>
+            <div class="movie-plot">@Model.Plot</div>
+        </div>
+
+    </div>
+    <div class="movie-title">@Model.Title (@Model.ReleaseYear)</div>
+</div>
