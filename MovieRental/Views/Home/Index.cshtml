@@ -6,6 +6,14 @@
     
 }
 
+<div class="genre-menu-container">
+    <div class="genre-menu-title">Browse by Genre</div>
+    <div class="genre-container">
+    @foreach(Genre genre in (IEnumerable<Genre>)ViewBag.Genres){
+        @Html.ActionLink(genre.Description, "Index", new { genre = genre.Description }, new { @class = "genre-menu" })    
+    }
+    </div>
+</div>
 
 @foreach (Movie movie in Model)
 {
@@ -13,6 +21,14 @@
 }
 
 @Styles.Render("~/Content/Movie.css")
+
+<style>
+    .genre-menu-container{position:relative;padding-bottom:30px}
+    .genre-menu{z-index:10; position:relative; display:inline-table;margin-top:5px;margin-left:10px;margin-right:10px;-webkit-transition:all 10s ease 2s;}
+    .genre-menu-title{display:block;font-weight:bold;top:0px;padding-left:10px;font-style:italic}
+    .genre-container{display:none;-webkit-transition:all 10s ease 2s}
+    .genre-menu-container:hover .genre-container{display:inline;}
+</style>
 
 <script>
 
