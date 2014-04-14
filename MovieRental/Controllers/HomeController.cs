@@ -10,6 +10,7 @@ namespace MovieRental.Controllers
 {
     public class HomeController : Controller
     {
+        [OutputCache(Duration = 10)]
         public ActionResult Index(string genre, string search)
         {
             MovieRepository rep = new MovieRepository();
