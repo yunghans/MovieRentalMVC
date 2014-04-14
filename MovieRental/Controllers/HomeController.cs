@@ -10,13 +10,18 @@ namespace MovieRental.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string genre)
+        public ActionResult Index(string genre, string search)
         {
             MovieRepository rep = new MovieRepository();
             IEnumerable<Genre> genres = rep.GetAllGenres();
 
             IEnumerable<Movie> movies;
-            if (!string.IsNullOrEmpty(genre))
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                movies = rep.FindMoviesByTitle(search);
+            }
+            else if (!string.IsNullOrEmpty(genre))
             {
                 Genre selectedGenre = genres.SingleOrDefault(g => g.Description == genre);
                 if (selectedGenre == null)
@@ -35,7 +40,11 @@ namespace MovieRental.Controllers
             
             ViewBag.Genres = genres;
 
-            return View(movies);
+            if (Request.IsAjaxRequest()){
+                return PartialView(movies);
+            } else {
+               return View(movies);
+            }
         }
 
         public ActionResult About()

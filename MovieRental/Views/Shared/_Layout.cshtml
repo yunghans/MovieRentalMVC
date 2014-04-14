@@ -12,26 +12,24 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("quick*rental", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
+                    @using (Ajax.BeginForm("Index", "Home", new { genre = string.Empty },
+                        new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "main-content" }))
+                    {
+                        @Html.TextBox("search")
+                        <input type="submit" value="Search" />
+                    }
                 </div>
             </div>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
+                <div id="main-content">
                 @RenderBody()
+                </div>
             </section>
         </div>
         <footer>
@@ -43,6 +41,7 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
         @RenderSection("scripts", required: false)
     </body>
 </html>
